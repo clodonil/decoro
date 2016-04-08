@@ -1,0 +1,137 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+
+                <div class="row-fluid">
+                   <form action="" method="post" name="new">
+                    {{form.hidden_tag() }}
+                    <p>
+                     {% for error in form.errors %}
+                        <span style="color: red;">[{{ error }}] </span>
+                     {%  endfor%} <br>
+                    </p>
+
+                    
+                    <table class="table  table-bordered ">
+                          <tr>
+                              <td  colspan=4> FATURAMENTO DO TRIMESTRE - ACUMULADO </td>
+                              <td> R$ {{ imposto.valor_faturamento }} </td>
+                          </tr>
+                          <tr>
+                              <td  colspan=3> FATURAMENTO DO MÊS</td>
+                              <td> {{ mes }} - {{ ano }} </td>
+                              <td> R$ {{ form.valor_faturamento(class_="span4",placeholder="") }} </td>
+                          </tr>
+                          <tr>                                               
+                            <td class="span1"> IMPOSTO </td>
+                            <td> ALIQUOTA </td>
+                            <td> VALOR DO IMPOSTO</td>
+                            <td> DEDUÇÕES/RETENÇÕES</td>
+                            <td> TOTAL A PAGAR</td>
+                         </tr>
+                        
+
+
+                          <tr>                                               
+                            <td class="span2"> PIS </td>
+                            <td class="span2"> {{ form.pis_aliquota(class_="span4")}} % </td>
+                            {% if imposto %}
+                               {% set vimposto = (imposto.valor_faturamento * imposto.pis_aliquota)/100 %}
+                             
+                            <td class="span2"> R$ {{'% 0.2f' % vimposto|float}} </td>
+                            {% else %}
+                               <td class="span2"> R$ 0 </td>
+                            {% endif %}   
+                            <td class="span2"> R$ {{ form.pis_deducao(class_="span4")}}</td>
+                            {% set tpis = vimposto - imposto.pis_deducao %}
+                            
+                            <td class="span2">  R$ {{ '%0.2f' % tpis|float }}</td>
+                         </tr>
+
+                          <tr>                                               
+                            <td class="span2"> COFINS </td>
+                            <td class="span2">  {{ form.cofins_aliquota(class_="span4")}} % </td>
+                            {% set vimposto = (imposto.valor_faturamento * imposto.cofins_aliquota)/100%}
+                            <td class="span2"> R$ {{ '%0.2f' % vimposto|float  }} </td>
+                            <td class="span2"> R$ {{ form.cofins_deducao(class_="span4")}}</td>
+                            {% set tcofins = vimposto - imposto.cofins_deducao %}
+                            <td class="span2">  R$ {{ '%0.2f' % tcofins|float }} </td>
+                         </tr>
+                          
+                          <tr>                                               
+                            <td class="span2"> CSLL </td>
+                            <td class="span2">  {{ form.csll_aliquota(class_="span4")}} % </td>
+                            {% set vimposto = (imposto.valor_faturamento * imposto.csll_aliquota)/100%}
+                            <td class="span2"> R$ {{ '%0.2f' % vimposto|float  }} </td>
+                            <td class="span2"> R$ {{ form.csll_deducao(class_="span4")}}</td>
+                            {% set tcsll = vimposto - imposto.csll_deducao %}
+                            <td class="span2">  R$ {{  '%0.2f' % tcsll|float }}</td>
+                         </tr>
+
+                          <tr>                                               
+                            <td class="span2"> IRPJ </td>
+                            <td class="span2"> {{ form.irpj_aliquota(class_="span4")}} % </td>
+                            {% set vimposto = (imposto.valor_faturamento * imposto.irpj_aliquota)/100%}
+                            <td class="span2"> R$ {{ '%0.2f' % vimposto|float }} </td>
+                            <td class="span2"> R$ {{ form.irpj_deducao(class_="span4")}}</td>
+                            {% set tirpj = vimposto - imposto.irpj_deducao%}
+                            <td class="span2">  R$ {{'%0.2f' % tirpj|float}}</td>
+                         </tr>
+
+                          <tr>                                               
+                            <td class="span2"> ISS </td>
+                            <td class="span2"> {{ form.iss_aliquota(class_="span4")}}%  </td>
+                            {% set vimposto = (imposto.valor_faturamento * imposto.iss_aliquota)/100 %}
+                            <td class="span2"> R$ {{ '%0.2f' % vimposto|float }} </td>
+                            <td class="span2"> R$ {{ form.iss_deducao(class_="span4")}}</td>
+                            {% set tiss = vimposto - imposto.iss_deducao%}
+                            <td class="span2">  R$ {{ '%0.2f' % tiss|float }}</td>
+                         </tr>
+
+                          <tr>
+                              <td  colspan=4> TOTAL IMPOSTO DO MÊS </td>
+                              {% set vtotal = imposto.valor_faturamento + tpis + tcofins + tcsll + tirpj + tiss%}
+                              <td> R$ {{ '%0.2f' % vtotal|float }} </td>
+                          </tr>
+
+                          <tr>
+                              <td  colspan=4> TOTAL LIQUIDO A RECEBER </td>
+                              <td> R$ {{ '%0.2f' % vtotal|float }} </td>
+                          </tr>
+               </table>
+              
+               <div class="row-fluid"> 
+                   <button  type="submit" class="btn btn-primary ">
+                       <i class="icon-save icon-only bigger-110"></i>                     
+                       Salvar
+                   </button>      
+                    <a class="btn btn-warning" href="{{ request.referrer }}">
+                      <i class="icon-reply icon-only bigger-180"></i>
+                      Voltar
+                    </a> 
+                  
+                </div><!--/row-->
+
+               </div>
+              </form>
+       
+
+              
+                
+                  <div class="hr hr-18 dotted hr-double"></div>
+              
+
+                
+              
+
+              
+           
+        
+   
+
+
+{% endblock %}
+
+
+
+

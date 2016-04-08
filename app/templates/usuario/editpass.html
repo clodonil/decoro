@@ -1,0 +1,61 @@
+
+<!-- extend from base layout -->
+
+{% extends "layout/base.html" %}
+
+{% block content %}
+  <div class="form-horizontal">
+    <form action="" method="post" name="edit">
+          {{form.hidden_tag() }}
+      <p>
+           {% for error in form.errors %}
+                   <span style="color: red;">[{{ error }}] </span>
+                {%  endfor%} <br>
+       </p>
+
+                 <div class="control-group">
+                       <label class="control-label" for="form-field-1">Login</label>
+                      <div class="controls">
+                     <strong> {{ user.login }} </strong>
+                      </div>
+                </div>                  
+
+                      <div class="control-group">
+             <label class="control-label" for="form-field-1">Password</label>
+            <div class="controls">
+                     {{ form.password }}
+            </div>
+        </div>
+
+
+                 <div class="control-group">
+             <label class="control-label" for="form-field-1">Confirmação Password</label>
+            <div class="controls">
+                     {{ form.confirm }}
+            </div>
+         </div>
+
+            
+              <div class="form-actions">
+                <button  class="btn btn-primary">
+                      <i class="icon-save icon-only bigger-180"></i>                     
+                    Salvar
+                 </button >
+                 &nbsp; &nbsp; &nbsp;  
+                      <a class="btn btn-warning" href="{{ request.referrer }}">
+                      <i class="icon-reply icon-only bigger-180"></i>
+                         Voltar
+                      </a> 
+                   
+               </div> 
+      </form>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+           

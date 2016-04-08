@@ -1,0 +1,143 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+
+                      
+                      
+
+ 
+<div class="profile-user-info profile-user-info-striped">
+											<div class="profile-info-row">
+												<div class="profile-info-name"> Nome </div>
+
+												<div class="profile-info-value">
+													<span  id="username"> {{ reg.nome }}</span>
+												</div>
+											</div>
+
+											<div class="profile-info-row">
+												<div class="profile-info-name"> Telefone </div>
+
+												<div class="profile-info-value">
+													<span id="username">{{ reg.tel1 }}</span>
+												</div>
+											</div>
+
+											<div class="profile-info-row">
+												<div class="profile-info-name"> Telefone </div>
+
+												<div class="profile-info-value">
+													<span  id="age"> {{ reg.tel2}}</span>
+												</div>
+											</div>
+
+											<div class="profile-info-row">
+												<div class="profile-info-name"> Telefone </div>
+
+												<div class="profile-info-value">
+													<span  id="signup">{{ reg.tel3}}</span>
+												</div>
+											</div>
+
+											<div class="profile-info-row">
+												<div class="profile-info-name"> E-Mail </div>
+
+												<div class="profile-info-value">
+													<span  id="email">{{ reg.email }}</span>
+												</div>
+											</div>
+
+											<div class="profile-info-row">
+												<div class="profile-info-name"> Endereço </div>
+
+												<div class="profile-info-value">
+													<span class="editable" id="about">{{ reg.end }}</span>
+												</div>
+											</div>
+											<div class="profile-info-row">
+												<div class="profile-info-name"> CEP </div>
+
+												<div class="profile-info-value">
+													<span  id="email">{{ reg.cep }}</span>
+												</div>
+											</div>
+											<div class="profile-info-row">
+												<div class="profile-info-name"> Cidade </div>
+
+												<div class="profile-info-value">
+													<span  id="email">{{ reg.cidade }}</span>
+												</div>
+											</div>
+											<div class="profile-info-row">
+												<div class="profile-info-name"> Bairro </div>
+
+												<div class="profile-info-value">
+													<span  id="email">{{ reg.bairro }}</span>
+												</div>
+											</div>
+											<div class="profile-info-row">
+												<div class="profile-info-name"> Estado </div>
+
+												<div class="profile-info-value">
+													<span  id="email">{{ reg.uf }}</span>
+												</div>
+											</div>
+											<div class="profile-info-row">
+												<div class="profile-info-name"> Observações </div>
+
+												<div class="profile-info-value">
+													<span  id="email">{{ reg.outros }}</span>
+												</div>
+											</div>
+
+
+										</div>
+
+
+
+
+
+<div class="space-12"></div>
+
+<div class="align-right">
+
+{% if obj == 2 %}
+
+     <a class="btn btn-primary" href="{{url_for('contato.edit', emp_id=reg.id)}}">
+		<i class="icon-edit bigger-200"></i>
+		Alterar
+    </a>
+   
+    
+     <a class="btn btn-danger" href="{{url_for('contato.delete', emp_id=reg.id)}}">
+		<i class="icon-trash bigger-200"></i>
+		Apagar
+    </a>
+{% elif obj == 1 %}  
+     <a class="btn btn-primary" href="{{url_for('cliente.edit', emp_id=reg.id)}}">
+		<i class="icon-edit bigger-200"></i>
+		Alterar
+    </a>
+
+{% else %}
+     <a class="btn btn-primary" href="{{url_for('usuario.edit', user_id=reg.id)}}">
+		<i class="icon-edit bigger-200"></i>
+		Alterar
+    </a>
+
+
+{% endif %}
+
+<div class="space-12"></div>
+
+
+<a class="btn btn-warning" href="{{ request.referrer }}">
+    <i class="icon-reply  bigger-200"></i>
+		Voltar
+</a>
+</div>
+
+{% endblock %}
+
+
+

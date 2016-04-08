@@ -1,0 +1,81 @@
+<!-- extend from base layout -->
+
+<!-- extend from base layout -->
+
+{% extends "layout/base.html" %}
+
+{% block content %}
+  <div class="form-horizontal">
+    <form action="" method="post" name="new">
+          {{form.hidden_tag() }}
+      <p>
+           {% for error in form.errors %}
+                   <span style="color: red;">[{{ error }}] </span>
+                {%  endfor%} <br>
+       </p>
+
+                 <div class="control-group">
+             <label class="control-label" for="form-field-1">Vencimento</label>
+            <div class="controls">
+                     {{ form.data}}
+            </div>
+          </div>
+
+          <div class="control-group">
+             <label class="control-label" for="form-field-1">Atividade</label>
+            <div class="controls">
+                     {{ form.titulo }}
+            </div>
+          </div>
+
+               <div class="control-group">
+             <label class="control-label" for="form-field-1">Cliente</label>
+            <div class="controls">
+                     {{form.cliente_id }}
+            </div>
+          </div>
+
+
+               
+
+            <div class="control-group">
+             <label class="control-label" for="form-field-1">Frequência</label>
+            <div class="controls">
+                     {{ form.frequencia }}
+            </div>
+          </div>
+
+           <div class="control-group">
+             <label class="control-label" for="form-field-1">Status</label>
+            <div class="controls">
+                     {{ form.status }}
+            </div>
+          </div>
+
+           <div class="control-group">
+             <label class="control-label" for="form-field-1">Histórico</label>
+            <div class="controls">
+                     {{ form.descricao }}
+            </div>
+              </div>
+
+
+
+               <div class="form-actions">
+                <button  class="btn btn-primary">
+                      <i class="icon-save icon-only bigger-180"></i>                     
+                    Salvar
+                 </button >
+                 &nbsp; &nbsp; &nbsp;  
+                      <a class="btn btn-warning" href="{{ request.referrer }}">
+                      <i class="icon-reply icon-only bigger-180"></i>
+                         Voltar
+                      </a> 
+                   
+               </div> 
+
+      </form>
+</div>
+{% endblock %}
+
+

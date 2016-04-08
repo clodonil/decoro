@@ -1,0 +1,7 @@
+nohup.out
+*.db
+*~
+banco_de_dados.db
+*.pdf
+env
+*.pyc

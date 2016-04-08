@@ -1,0 +1,125 @@
+<!-- extend from base layout -->
+
+{% extends "layout/base.html" %}
+
+{% block content %}
+  <div class="form-horizontal">
+    <form action="" method="post" name="new">
+          {{form.hidden_tag() }}
+      <p>
+           {% for error in form.errors %}
+                   <span style="color: red;">[{{ error }}] </span>
+                {%  endfor%} <br>
+       </p>
+                 <div class="control-group">
+             <label class="control-label" for="form-field-1">Nome</label>
+            <div class="controls">
+                     {{ form.nome(size=50) }}
+            </div>
+          </div>
+
+               <div class="control-group">
+             <label class="control-label" for="form-field-1">CNPJ</label>
+            <div class="controls">
+                     {{form.cnpj }}
+            </div>
+          </div>
+
+
+               <div class="control-group">
+             <label class="control-label" for="form-field-1">Telefone</label>
+            <div class="controls">
+                     {{ form.tel }}
+            </div>
+          </div>
+
+               <div class="control-group">
+             <label class="control-label" for="form-field-1">Endereço</label>
+            <div class="controls">
+                     {{ form.end }}
+            </div>
+          </div>
+
+               <div class="control-group">
+             <label class="control-label" for="form-field-1">CEP</label>
+            <div class="controls">
+                     {{ form.cep }}
+            </div>
+          </div>
+
+           <div class="control-group">
+             <label class="control-label" for="form-field-1">Bairro</label>
+            <div class="controls">
+                     {{ form.bairro }}
+            </div>
+          </div>
+
+           <div class="control-group">
+             <label class="control-label" for="form-field-1">Cidade</label>
+            <div class="controls">
+                     {{ form.cidade }}
+            </div>
+          </div>
+
+           <div class="control-group">
+             <label class="control-label" for="form-field-1">Estado</label>
+            <div class="controls">
+                     {{ form.uf}}
+            </div>
+          </div>
+
+            <div class="control-group">
+             <label class="control-label" for="form-field-1">Nome do Responsável</label>
+            <div class="controls">
+                     {{ form.nome_resp }}
+            </div>
+          </div>
+
+           <div class="control-group">
+             <label class="control-label" for="form-field-1">Tel do Responsável</label>
+            <div class="controls">
+                     {{ form.tel_resp }}
+            </div>
+              </div>
+
+            <div class="control-group">
+             <label class="control-label" for="form-field-1">E-Mail</label>
+            <div class="controls">
+                     {{ form.email }}
+            </div>
+              </div>
+
+             <div class="control-group">
+             <label class="control-label" for="form-field-1">Status</label>
+            <div class="controls">
+                     {{ form.status }}
+            </div>
+              </div>
+
+             <div class="control-group">
+             <label class="control-label" for="form-field-1">Enquadramento</label>
+            <div class="controls">
+                     {{ form.categoria_id }}
+            </div>
+              </div>
+
+            <div class="control-group">
+             <label class="control-label" for="form-field-1">Outras Informações</label>
+            <div class="controls">
+                     {{ form.outros(rows=10) }}
+            </div>
+              </div>
+
+
+
+               <div class="form-actions">
+            <input type="submit" value="Salvar" class="btn btn-info">   
+              </div>
+
+      </form>
+</div>
+{% endblock %}
+
+
+
+
