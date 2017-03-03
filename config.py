@@ -26,4 +26,4 @@ MAIL_PORT=587
 MAIL_USE_SSL=False
 MAIL_USE_TLS=True
 MAIL_USERNAME = 'clodonil@decoroecsa.com.br'
-MAIL_PASSWORD = 'AkugF176.'
+MAIL_PASSWORD = 'senha'
